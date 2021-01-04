@@ -1,17 +1,17 @@
 package sudoku;
 
 public class Sudoku {
-    private final Case[][] _grid;
+    private final Case[][] grid;
     public int LINE;
     public int COLUMN;
 
     public Sudoku(int[][] map) {
         LINE = map[0].length;
         COLUMN = map.length;
-        _grid = new Case[COLUMN][LINE];
+        grid = new Case[COLUMN][LINE];
         for (int column = 0; column < map.length; column++) {
             for (int line = 0; line < map[column].length; line++) {
-                _grid[column][line] = new Case(column, line, map[column][line]);
+                grid[column][line] = new Case(column, line, map[column][line]);
             }
         }
     }
@@ -31,11 +31,11 @@ public class Sudoku {
     }
 
     public Case[][] get_grid() {
-        return _grid;
+        return grid;
     }
 
     public Case at(int column, int line) {
-        return _grid[column][line];
+        return grid[column][line];
     }
 
 }

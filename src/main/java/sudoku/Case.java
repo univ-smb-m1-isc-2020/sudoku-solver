@@ -1,25 +1,25 @@
 package sudoku;
 
 public class Case {
-    private final int _column;
-    private final int _line;
-    private final int _value;
+    private final int column;
+    private final int line;
+    private final int value;
 
     public Case(int column, int line, int value) {
-        _column = column;
-        _line = line;
-        _value = value;
+        this.column = column;
+        this.line = line;
+        this.value = value;
     }
 
-    public int get_column() {
-        return _column;
+    public int getColumn() {
+        return column;
     }
 
-    public int get_line() {
-        return _line;
+    public int getLine() {
+        return line;
     }
 
-    public int get_value() {
-        return _value;
+    public int getValue() {
+        return value;
     }
 }

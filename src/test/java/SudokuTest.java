@@ -23,9 +23,9 @@ public class SudokuTest {
         assertEquals(sudoku1.LINE, sudoku2.LINE);
         for (int column = 0; column < sudoku1.COLUMN; column++) {
             for (int line = 0; line < sudoku1.LINE; line++) {
-                assertEquals(sudoku1.at(column, line).get_value(), sudoku2.at(column, line).get_value());
-                assertEquals(sudoku1.at(column, line).get_column(), sudoku2.at(column, line).get_column());
-                assertEquals(sudoku1.at(column, line).get_line(), sudoku2.at(column, line).get_line());
+                assertEquals(sudoku1.at(column, line).getValue(), sudoku2.at(column, line).getValue());
+                assertEquals(sudoku1.at(column, line).getColumn(), sudoku2.at(column, line).getColumn());
+                assertEquals(sudoku1.at(column, line).getLine(), sudoku2.at(column, line).getLine());
             }
         }
 
