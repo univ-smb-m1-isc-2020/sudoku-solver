@@ -26,4 +26,3 @@ it's up to you to
 * configure project for analysis on sonarcloud
 
 good luck :D
-
