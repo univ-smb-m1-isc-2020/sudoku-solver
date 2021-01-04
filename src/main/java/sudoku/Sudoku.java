@@ -1,3 +1,5 @@
+package sudoku;
+
 public class Sudoku {
     private final Case[][] _grid;
     public int LINE;

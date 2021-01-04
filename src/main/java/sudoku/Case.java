@@ -1,3 +1,5 @@
+package sudoku;
+
 public class Case {
     private final int _column;
     private final int _line;
