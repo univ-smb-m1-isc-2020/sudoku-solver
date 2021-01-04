@@ -8,4 +8,16 @@ public class Case {
         _line = line;
         _value = value;
     }
+
+    public int get_column() {
+        return _column;
+    }
+
+    public int get_line() {
+        return _line;
+    }
+
+    public int get_value() {
+        return _value;
+    }
 }

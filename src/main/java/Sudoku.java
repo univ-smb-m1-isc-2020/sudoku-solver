@@ -1,9 +1,18 @@
-import java.util.ArrayList;
-
 public class Sudoku {
-    public static int LINE;
-    public static int COLUMN;
-    private final ArrayList<Case> _grid;
+    private final Case[][] _grid;
+    public int LINE;
+    public int COLUMN;
+
+    public Sudoku(int[][] map) {
+        LINE = map[0].length;
+        COLUMN = map.length;
+        _grid = new Case[COLUMN][LINE];
+        for (int column = 0; column < map.length; column++) {
+            for (int line = 0; line < map[column].length; line++) {
+                _grid[column][line] = new Case(column, line, map[column][line]);
+            }
+        }
+    }
 
     public Sudoku() {
         this(new int[][]{
@@ -19,14 +28,12 @@ public class Sudoku {
         });
     }
 
-    public Sudoku(int[][] map) {
-        _grid = new ArrayList<>();
-        for (int column = 0; column < map.length; column++) {
-            for (int line = 0; line < map[column].length; line++) {
-                _grid.add(new Case(column, line, map[column][line]));
-            }
-        }
-        LINE = map[0].length;
-        COLUMN = map.length;
+    public Case[][] get_grid() {
+        return _grid;
     }
+
+    public Case at(int column, int line) {
+        return _grid[column][line];
+    }
+
 }
