@@ -1,6 +1,5 @@
 public class Main {
     public static void main(String[] arg) throws Exception {
-        try{
             Board board = new Board(new int[][]{
                 { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
@@ -12,13 +11,5 @@ public class Main {
                 { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
                 { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
             });
-            System.out.println(board.toString());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-
     }
 }

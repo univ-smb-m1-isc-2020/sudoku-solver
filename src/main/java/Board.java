@@ -3,7 +3,7 @@ public class Board {
     private int row;
     private int column;
 
-    public Board(int[][] myBoard) throws Exception {
+    public Board(int[][] myBoard){
             this.row = myBoard.length;
             this.column = myBoard[0].length;
             this.board = new Cell[row][column];

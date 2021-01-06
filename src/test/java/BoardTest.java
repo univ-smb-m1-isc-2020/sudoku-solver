@@ -84,21 +84,21 @@ public class BoardTest {
     }
 
     @Test
-    public void rowAndColumnLengthShouldBeNine() {
-        assertEquals(goodBoard.getRow(),SIZE);
-        assertEquals(goodBoard.getColumn(),SIZE);
-        assertNotEquals(badBoardSizeColumn.getColumn(), SIZE);
-        assertNotEquals(badBoardSizeRow.getRow(), SIZE);
+    private void rowAndColumnLengthShouldBeNine() {
+        assertEquals(SIZE, goodBoard.getRow());
+        assertEquals(SIZE, goodBoard.getColumn());
+        assertNotEquals(SIZE, badBoardSizeColumn.getColumn());
+        assertNotEquals(SIZE, badBoardSizeRow.getRow());
     }
 
     @Test
-    public void everyValueShouldBeBetweenZeroAndNine() {
+    private void everyValueShouldBeBetweenZeroAndNine() {
         assertTrue(Board.haveOnyValueBetweenZeroAndNine(goodBoard));
         assertFalse(Board.haveOnyValueBetweenZeroAndNine(badBoardValue));
     }
 
     @Test
-    public void boardValuesAreCorrectInInitialisation() {
+    private void boardValuesAreCorrectInInitialisation() {
         assertTrue(Board.valueAppearOnlyOneTimeInRow(goodBoard));
         assertFalse(Board.valueAppearOnlyOneTimeInRow(badBoardDuplicateValueRow));
         assertTrue(Board.valueAppearOnlyOneTimeInColumn(goodBoard));
