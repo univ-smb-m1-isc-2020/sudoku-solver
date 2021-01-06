@@ -1,23 +1,23 @@
 package sudoku;
 
 public class Board {
-    private Cell[][] board;
+    private Cell[][] cells;
     private int row;
     private int column;
 
     public Board(int[][] myBoard){
             this.row = myBoard.length;
             this.column = myBoard[0].length;
-            this.board = new Cell[row][column];
+            this.cells = new Cell[row][column];
             for(int i=0; i<row; i++){
                 for(int j=0; j<column; j++){
-                    this.board[i][j] = new Cell(i, j, myBoard[i][j]);
+                    this.cells[i][j] = new Cell(i, j, myBoard[i][j]);
                 }
             }
     }
 
     public Cell[][] getBoard() {
-        return board;
+        return cells;
     }
 
     public int getRow() {
@@ -41,13 +41,7 @@ public class Board {
 
     public static boolean valueAppearOnlyOneTimeInRow(Board b){
         for(Cell[] row: b.getBoard()){
-            for (int i = 0; i < row.length; i++) {
-                for (int j = i + 1 ; j < row.length; j++) {
-                    if (row[i].getValue() == row[j].getValue() && row[i].getValue() != 0) {
-                        return false;
-                    }
-                }
-            }
+            if (ValueIsTwiceTimeInArray(row)) return false;
         }
         return true;
     }
@@ -58,15 +52,20 @@ public class Board {
             for(int i=0; i<column.length; i++){
                 column[i] = b.getBoard()[i][indexColumn];
             }
-            for (int i = 0; i < column.length; i++) {
-                for (int j = i + 1 ; j < column.length; j++) {
-                    if (column[i].getValue() == column[j].getValue() && column[i].getValue() != 0) {
-                        return false;
-                    }
+            if (ValueIsTwiceTimeInArray(column)) return false;
+        }
+        return true;
+    }
+
+    private static boolean ValueIsTwiceTimeInArray(Cell[] column) {
+        for (int i = 0; i < column.length; i++) {
+            for (int j = i + 1 ; j < column.length; j++) {
+                if (column[i].getValue() == column[j].getValue() && column[i].getValue() != 0) {
+                    return true;
                 }
             }
         }
-        return true;
+        return false;
     }
 
     @Override

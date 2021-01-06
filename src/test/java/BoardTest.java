@@ -15,7 +15,7 @@ public class BoardTest {
     private static final int SIZE = 9;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         goodBoard = new Board(new int[][]{
                 { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
