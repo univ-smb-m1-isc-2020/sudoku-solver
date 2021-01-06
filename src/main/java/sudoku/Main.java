@@ -1,5 +1,7 @@
+package sudoku;
+
 public class Main {
-    public static void main(String[] arg) throws Exception {
+    public static void main(String[] arg){
             Board board = new Board(new int[][]{
                 { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
