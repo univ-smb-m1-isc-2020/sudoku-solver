@@ -105,4 +105,10 @@ public class BoardTest {
         assertTrue(Board.valueAppearOnlyOneTimeInColumn(goodBoard));
         assertFalse(Board.valueAppearOnlyOneTimeInColumn(badBoardDuplicateValueColumn));
     }
+
+    @Test
+    public void boardToStringShouldNotReturnEmptyString()
+    {
+        assertNotEquals(goodBoard.toString(), "");
+    }
 }

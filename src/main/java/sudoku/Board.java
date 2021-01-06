@@ -41,7 +41,7 @@ public class Board {
 
     public static boolean valueAppearOnlyOneTimeInRow(Board b){
         for(Cell[] row: b.getBoard()){
-            if (ValueIsTwiceTimeInArray(row)) return false;
+            if (valueIsTwiceTimeInArray(row)) return false;
         }
         return true;
     }
@@ -52,12 +52,12 @@ public class Board {
             for(int i=0; i<column.length; i++){
                 column[i] = b.getBoard()[i][indexColumn];
             }
-            if (ValueIsTwiceTimeInArray(column)) return false;
+            if (valueIsTwiceTimeInArray(column)) return false;
         }
         return true;
     }
 
-    private static boolean ValueIsTwiceTimeInArray(Cell[] column) {
+    private static boolean valueIsTwiceTimeInArray(Cell[] column) {
         for (int i = 0; i < column.length; i++) {
             for (int j = i + 1 ; j < column.length; j++) {
                 if (column[i].getValue() == column[j].getValue() && column[i].getValue() != 0) {

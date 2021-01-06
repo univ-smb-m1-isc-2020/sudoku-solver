@@ -23,6 +23,18 @@ public class Cell {
         return value;
     }
 
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
     public String toString(){
         StringBuilder str = new StringBuilder();
         str.append("Cell:");
