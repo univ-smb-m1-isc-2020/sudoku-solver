@@ -109,6 +109,6 @@ public class BoardTest {
     @Test
     public void boardToStringShouldNotReturnEmptyString()
     {
-        assertNotEquals(goodBoard.toString(), "");
+        assertNotEquals("", goodBoard.toString());
     }
 }

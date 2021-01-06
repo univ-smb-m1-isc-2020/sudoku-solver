@@ -48,4 +48,10 @@ public class CellTest {
         assertEquals(4, goodCell.getRow());
         assertNotEquals(5, goodCell.getRow());
     }
+
+    @Test
+    public void CellToStringShouldNotReturnEmptyString()
+    {
+        assertNotEquals("", goodCell.toString());
+    }
 }
