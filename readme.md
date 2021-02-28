@@ -1,7 +1,7 @@
 # sudoku-solver
 
 We would like you to provide us a simple sodoku solver.
- here is the structure to provide the initial grid.
+ here is the structure to provide the initial Grid.
  
 ```
 int[][] board = {
@@ -19,7 +19,7 @@ int[][] board = {
 
 it's up to you to 
 * create a maven project
-* code the structure of a sudoku grid
+* code the structure of a sudoku Grid
 * code and unit test the rules of a cell groups
 * code the interaction and unit test of cells belonging to group
 * code a solver algorithm
