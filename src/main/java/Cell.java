@@ -9,6 +9,17 @@ public class Cell {
         this.column = column;
     }
 
+    public boolean notDefine(){
+        if(value<=0 || value > 9){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isEgal(Cell compare){
+        return this.value == compare.value;
+    }
+
     public String toString(){
         return Integer.toString(value);
     }

@@ -1,10 +1,9 @@
 public class Sudoku {
     private Grid grid;
 
-    public Sudoku(Grid grid){
+    public Sudoku(Grid grid) {
         this.grid = grid;
     }
-    
 
     public String toString(){
         return grid.toString();
@@ -29,6 +28,11 @@ public class Sudoku {
 
 
         System.out.println(board.toString());
+
+        //test si une col est bonne
+        //une ligne bonne
+        //un groupe cell bon
+
 
         //Sudoku solution = board.solve();
         //System.out.println("A solution found : " + solution.toString());

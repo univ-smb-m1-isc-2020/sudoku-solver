@@ -17,6 +17,79 @@ public class Grid {
         }
     }
 
+    /**
+     * Check if columns are correct
+     * @return boolean
+     */
+    public boolean verifColumns(){
+        for(int col=0; col<size; col++){
+            if(!verifAColumn(col)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Check if a column is correct
+     * @param iCol the index of the column
+     * @return boolean
+     */
+    public boolean verifAColumn(int iCol){
+        for(int row=0; row<size; row++){
+
+            //value != [1-9]
+            if(cells[row][iCol].notDefine()){
+                return false;
+            }
+
+            //not unique value
+            for(int j=row+1; j<size; j++){
+                if(cells[row][iCol].isEgal(cells[j][iCol])){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Check if a row is correct
+     * @param iRow the index of the tow
+     * @return boolean
+     */
+    public boolean verifARow(int iRow){
+        for(int col=0; col<size; col++){
+
+            //value != [1-9]
+            if(cells[iRow][col].notDefine()){
+                return false;
+            }
+
+            //not unique value
+            for(int j=col+1; j<size; j++){
+                if(cells[iRow][col].isEgal(cells[j][col])){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Check if rows are correct
+     * @return boolean
+     */
+    public boolean verifRows(){
+        for(int row=0; row<size; row++){
+            if(!verifARow(row)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     public String toString(){
         String str;
         str = "\n-------------------------";
