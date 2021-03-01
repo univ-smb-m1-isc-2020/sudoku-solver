@@ -89,6 +89,44 @@ public class Grid {
         return true;
     }
 
+    /**
+     * Check if a group of cells is correct
+     * @param iRow index
+     * @param iCol index
+     * @return boolean
+     */
+    public boolean verifAGroup(int iRow, int iCol){
+        for(int row=iRow; row<iRow+3 && row<size; row++){
+            for(int col=iCol; col<iCol+3 && col<size; col++){
+
+                for(int rowC=row+1; rowC<iRow+3; rowC++){
+                    for(int colC=col+1; colC<iCol+3; colC++){
+
+                        if(cells[row][col].isEgal(cells[rowC][colC])){
+                            return false;
+                        }
+                    }
+                }
+
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Check if groups are correct
+     * @return boolean
+     */
+    public boolean verifGroups(){
+        for(int row=0; row<size; row=row+3){
+            for(int col=0; col<size; col=col+3){
+                if(!verifAGroup(row, col)){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     public String toString(){
         String str;

@@ -9,6 +9,10 @@ public class Cell {
         this.column = column;
     }
 
+    /**
+     * Check if the cell's value isn't define
+     * @return boolean
+     */
     public boolean notDefine(){
         if(value<=0 || value > 9){
             return true;
@@ -16,6 +20,11 @@ public class Cell {
         return false;
     }
 
+    /**
+     * Check if this cell's value is the same of an other
+     * @param compare
+     * @return boolean
+     */
     public boolean isEgal(Cell compare){
         return this.value == compare.value;
     }
