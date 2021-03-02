@@ -21,12 +21,31 @@ public class Cell {
     }
 
     /**
+     * Check if the cell's value is define
+     * @return
+     */
+    public boolean isDefine(){
+        if(value>0 && value <= 9){
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Check if this cell's value is the same of an other
      * @param compare
      * @return boolean
      */
     public boolean isEgal(Cell compare){
         return this.value == compare.value;
+    }
+
+    public void setValue(int newValue){
+        this.value = newValue;
+    }
+
+    public int getValue(){
+        return this.value;
     }
 
     public String toString(){
