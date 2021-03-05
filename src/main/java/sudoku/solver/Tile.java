@@ -15,14 +15,20 @@ public class Tile {
     ///Constructors
     public Tile(){ this.value = (Value.EMPTY); }
 
-    public Tile(Value value) { this.fill(value); }
+    public Tile(Value value)
+    {
+        if (value.getValue() > 0)
+            this.fill(value);
+        else
+            this.value = Value.EMPTY;
+    }
 
     ///Methods
 
     public void fill(Value value)  {
         if (value.getValue() < 1 || value.getValue() > 9)
         {
-            throw new IllegalArgumentException("Trying to fill tile with invalid value :" + value.toString());
+            throw new IllegalArgumentException("Trying to fill tile with invalid value : " + value.toString());
         }
         else
         {
