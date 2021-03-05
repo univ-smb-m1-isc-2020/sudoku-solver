@@ -10,7 +10,7 @@ public abstract class Region{
     public boolean checkIfValidPlacement(int i)
     {
         for (Tile child : children)
-            if (child.GetValue() == Value.values()[i])
+            if (child.getValue() == Value.values()[i])
                 return false;
         return true;
     }

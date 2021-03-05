@@ -31,6 +31,6 @@ public class Column extends Region {
     @Override
     public void addChild(Tile tile, int index) {
         this.children[index] = tile;
-        tile.SetColumn(this);
+        tile.setColumn(this);
     }
 }

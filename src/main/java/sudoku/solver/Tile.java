@@ -45,19 +45,19 @@ public class Tile {
     }
 
     ///Setters & Getters
-    public void SetSquare(Square square) {
+    public void setSquare(Square square) {
         this.square = square;
     }
 
-    public void SetRow(Row row)
+    public void setRow(Row row)
     {
         this.row = row;
     }
 
-    public void SetColumn(Column column)
+    public void setColumn(Column column)
     {
         this.column = column;
     }
 
-    public Value GetValue() { return this.value; }
+    public Value getValue() { return this.value; }
 }
