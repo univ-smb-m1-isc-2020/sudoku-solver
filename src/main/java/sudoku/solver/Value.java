@@ -13,14 +13,14 @@ public enum Value {
     NINE(9);
 
 
-    private final int value;
+    private final int internalValue;
 
     Value(final int newValue) {
-        value = newValue;
+        internalValue = newValue;
     }
 
     public int getValue() {
-        return value;
+        return internalValue;
     }
 
 
@@ -43,8 +43,8 @@ public enum Value {
     }
 
     public String toString() {
-        if (this.value != -1)
-            return Integer.toString(this.value);
+        if (this.internalValue != -1)
+            return Integer.toString(this.internalValue);
         else
             return "_";
     }
