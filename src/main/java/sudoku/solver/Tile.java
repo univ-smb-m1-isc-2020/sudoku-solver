@@ -20,8 +20,15 @@ public class Tile {
     ///Methods
 
     public void fill(Value value)  {
-        assert (value.getValue() > 0 && value.getValue() < 10) : "Trying to invalid value";
-        this.value = value;
+        if (value.getValue() < 1 || value.getValue() > 9)
+        {
+            throw new IllegalArgumentException("Trying to fill tile with invalid value :" + value.toString());
+        }
+        else
+        {
+            // Set the price
+            this.value = value;
+        }
     }
 
     public void empty() { this.value = Value.EMPTY; }
