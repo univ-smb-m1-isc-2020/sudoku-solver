@@ -1,10 +1,11 @@
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import sudoku.Sudoku;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SudokuTest {
+
     @Test
     public void defaultConstructorSudokuShouldBeEqualToExampleGiven() {
         Sudoku sudoku1 = new Sudoku();
@@ -23,9 +24,9 @@ public class SudokuTest {
         assertEquals(sudoku1.LINE, sudoku2.LINE);
         for (int column = 0; column < sudoku1.COLUMN; column++) {
             for (int line = 0; line < sudoku1.LINE; line++) {
-                assertEquals(sudoku1.at(column, line).getValue(), sudoku2.at(column, line).getValue());
-                assertEquals(sudoku1.at(column, line).getColumn(), sudoku2.at(column, line).getColumn());
-                assertEquals(sudoku1.at(column, line).getLine(), sudoku2.at(column, line).getLine());
+                assertEquals(sudoku1.at(column, line), sudoku2.at(column, line));
+                assertEquals(sudoku1.at(column, line), sudoku2.at(column, line));
+                assertEquals(sudoku1.at(column, line), sudoku2.at(column, line));
             }
         }
 
@@ -57,6 +58,18 @@ public class SudokuTest {
 
         });
         assertEquals(sudoku1.LINE, sudoku1.COLUMN);
+        sudoku1.rowAtIndexIsValid(1);
     }
+
+    @Test
+    public void rowsAndColumnsValid(){
+        Sudoku sudo = new Sudoku();
+        assertTrue(sudo.rowsAreValid());
+        sudo = new Sudoku(new int[][]{{1, 1}});
+        assertFalse(sudo.rowAtIndexIsValid(0));
+    }
+
+
+
 
 }
