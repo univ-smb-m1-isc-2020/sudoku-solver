@@ -1,3 +1,5 @@
+package sudoku.solver;
+
 public class SudokuSolver {
 
     public static void main(String[] argv)
@@ -8,7 +10,6 @@ public class SudokuSolver {
         //System.out.println(game.toString());
         
         //TODO sonarcloud
-        //TODO add alternate constructor to [][]int as parameter
         //TODO refactor parser to line per line of sudokuboard
         //TODO refactor : add N size for tiles
 

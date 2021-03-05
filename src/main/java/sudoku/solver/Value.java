@@ -1,3 +1,5 @@
+package sudoku.solver;
+
 public enum Value {
     EMPTY(-1),
     ONE(1),

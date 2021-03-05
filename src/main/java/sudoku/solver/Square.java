@@ -1,3 +1,5 @@
+package sudoku.solver;
+
 public class Square extends Region {
 
     public Square()
