@@ -12,7 +12,7 @@ public class Tile {
     ///Constructors
     public Tile(){ this.value = (Value.EMPTY); }
 
-    public Tile(Value value) { this.Fill(value); }
+    public Tile(Value value) { this.fill(value); }
 
     ///Methods
 
