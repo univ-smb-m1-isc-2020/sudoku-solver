@@ -28,5 +28,7 @@ public abstract class Region{
 
     public abstract void addChild(Tile tile, int index);
 
+    public Tile[] getChildren() { return this.children; }
+
     public Tile getChild(int index){ return children[index]; }
 }
