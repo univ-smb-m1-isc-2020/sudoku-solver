@@ -1,5 +1,6 @@
 package sudoku.solver;
 
+import java.util.List;
 import java.util.ArrayList;
 
 public abstract class Region{
@@ -14,9 +15,9 @@ public abstract class Region{
         return true;
     }
 
-    public ArrayList<Value> getPossibleFillings()
+    public List<Value> getPossibleFillings()
     {
-        ArrayList<Value> result = new ArrayList<Value>();
+        List<Value> result = new ArrayList<>();
 
         for (int i=0; i<9 ; ++i)
             if (this.checkIfValidPlacement(i))
@@ -25,7 +26,7 @@ public abstract class Region{
         return result;
     }
 
-    public abstract void AddChild(Tile tile, int index);
+    public abstract void addChild(Tile tile, int index);
 
     public Tile getChild(int index){ return children[index]; }
 }
