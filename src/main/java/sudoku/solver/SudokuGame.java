@@ -5,6 +5,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SudokuGame {
 
@@ -60,6 +62,30 @@ public class SudokuGame {
         this.fill(intValues);
     }
 
+    public SudokuGame(SudokuGame sudokuGame)
+    {
+        for (int i=0; i<9; ++i)
+        {
+            squares[i] = new Square();
+            rows[i] = new Row();
+            columns[i] = new Column();
+        }
+
+        Tile tile;
+
+        for (int row=0; row < 9; ++row)
+        {
+            for (int column = 0; column < 9; ++column)
+            {
+                tile = new Tile(sudokuGame.getTile(row, column));
+                this.rows[row].addChild(tile, column);
+                this.columns[column].addChild(tile, row);
+                this.squares[Square.getSquareIndex(row, column)].addChild(tile, row, column);
+            }
+        }
+    }
+
+
     private void fill(Value[][] values)
     {
         Tile tile;
@@ -80,6 +106,26 @@ public class SudokuGame {
         this.fill(values);
     }
 
+    public List<Tile> getEmptyTiles()
+    {
+        List<Tile> result = new ArrayList<>();
+
+        for (Region row : rows)
+        {
+            for (Tile tile : row.getChildren())
+            {
+                if (tile.isEmpty())
+                {
+                    result.add(tile);
+                }
+            }
+        }
+
+        System.out.println(result);
+
+        return result;
+    }
+
 
     public void fillTile(int rowIndex, int columnIndex, Value value)
     {
@@ -89,6 +135,11 @@ public class SudokuGame {
     public void emptyTile(int rowIndex, int columnIndex)
     {
         this.rows[rowIndex].getChild(columnIndex).empty();
+    }
+
+    public Tile getTile(int rowIndex, int columnIndex)
+    {
+        return this.rows[rowIndex].getChild(columnIndex);
     }
 
     public String toString()
