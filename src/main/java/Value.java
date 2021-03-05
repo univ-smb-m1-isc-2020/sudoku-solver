@@ -18,4 +18,26 @@ public enum Value {
     }
 
     public int getValue() { return value; }
+
+
+    public static Value[][] convertIntArray(int[][] intValues)
+    {
+        int rows = intValues.length;
+        int columns = intValues[0].length;
+
+        assert(rows == columns);
+
+
+        Value[][] result = new Value[rows][columns];
+
+        for (int i=0; i<rows; ++i)
+        {
+            for (int j=0; j<columns; ++j)
+            {
+                result[i][j] = Value.values()[intValues[i][j]];
+            }
+        }
+
+        return result;
+    }
 }
