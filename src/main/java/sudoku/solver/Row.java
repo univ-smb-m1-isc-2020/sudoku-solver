@@ -23,6 +23,8 @@ public class Row extends Region {
             acc.append(children[i].toString());
             acc.append(" ");
         }
+        
+        acc.append("|");
 
         return acc.toString();
     }
