@@ -23,6 +23,11 @@ public class Tile {
             this.value = Value.EMPTY;
     }
 
+    public Tile(Tile tile)
+    {
+        this.value = tile.value;
+    }
+
     ///Methods
 
     public void fill(Value value)  {
@@ -78,4 +83,6 @@ public class Tile {
     }
 
     public Value getValue() { return this.value; }
+
+    public boolean isEmpty() {return this.value == Value.EMPTY; }
 }
