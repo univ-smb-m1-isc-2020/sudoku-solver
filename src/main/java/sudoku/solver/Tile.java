@@ -26,14 +26,17 @@ public class Tile {
 
     public void empty() { this.value = Value.EMPTY; }
 
-    public List<Value> GetPossibleFillings()
+    public List<Value> getPossibleFillings()
     {
         //Get the set of rows
         HashSet<Value> result = new HashSet<>(this.row.getPossibleFillings());
+
         //Intersect the set with the column Set
         result.retainAll( new HashSet<>(this.column.getPossibleFillings()));
+
         //Intersect it again with the square Set
         result.retainAll( new HashSet<>(this.square.getPossibleFillings()));
+
         //Remove the empty values
         result.remove(Value.EMPTY);
 
