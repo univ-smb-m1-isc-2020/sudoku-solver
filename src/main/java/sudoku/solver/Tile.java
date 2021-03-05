@@ -1,5 +1,6 @@
 package sudoku.solver;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -25,7 +26,7 @@ public class Tile {
 
     public void empty() { this.value = Value.EMPTY; }
 
-    public ArrayList<Value> GetPossibleFillings()
+    public List<Value> GetPossibleFillings()
     {
         //Get the set of rows
         HashSet<Value> result = new HashSet<>(this.row.getPossibleFillings());
@@ -39,7 +40,7 @@ public class Tile {
         return new ArrayList<>(result);
     }
 
-    @Override
+    @Override   
     public String toString()
     {
         return this.value.toString();
