@@ -36,12 +36,12 @@ public class Square extends Region {
     }
 
     @Override
-    public void AddChild(Tile tile, int index) {
+    public void addChild(Tile tile, int index) {
         this.children[index] = tile;
         tile.SetSquare(this);
     }
 
-    public void AddChild(Tile tile, int rowIndex, int columnIndex) {
+    public void addChild(Tile tile, int rowIndex, int columnIndex) {
         this.children[(rowIndex % 3) * 3 + columnIndex % 3] = tile;
         tile.SetSquare(this);
     }

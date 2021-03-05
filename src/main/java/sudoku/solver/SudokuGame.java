@@ -29,9 +29,9 @@ public class SudokuGame {
             for (int column=0; column < 9; ++column)
             {
                 tile = new Tile();
-                this.rows[row].AddChild(tile, column);
-                this.columns[column].AddChild(tile, row);
-                this.squares[Square.getSquareIndex(row, column)].AddChild(tile, row, column);
+                this.rows[row].addChild(tile, column);
+                this.columns[column].addChild(tile, row);
+                this.squares[Square.getSquareIndex(row, column)].addChild(tile, row, column);
             }
     }
 
@@ -67,9 +67,9 @@ public class SudokuGame {
         for (int row=0; row < 9; ++row) {
             for (int column = 0; column < 9; ++column) {
                 tile = new Tile(values[row][column]);
-                this.rows[row].AddChild(tile, column);
-                this.columns[column].AddChild(tile, row);
-                this.squares[Square.getSquareIndex(row, column)].AddChild(tile, row, column);
+                this.rows[row].addChild(tile, column);
+                this.columns[column].addChild(tile, row);
+                this.squares[Square.getSquareIndex(row, column)].addChild(tile, row, column);
             }
         }
     }

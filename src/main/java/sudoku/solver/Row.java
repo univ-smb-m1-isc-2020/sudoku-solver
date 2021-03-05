@@ -28,7 +28,7 @@ public class Row extends Region {
     }
 
     @Override
-    public void AddChild(Tile tile, int index) {
+    public void addChild(Tile tile, int index) {
         this.children[index] = tile;
         tile.SetRow(this);
     }
