@@ -31,15 +31,10 @@ public class SudokuGame {
                 this.columns[column].AddChild(tile, row);
                 this.squares[Square.getSquareIndex(row, column)].AddChild(tile, row, column);
             }
-
-
     }
 
     public SudokuGame(String fileName)
     {
-        Value[][] values = this.parseJSON(fileName);
-        Tile tile;
-
         for (int i=0; i<9; ++i)
         {
             squares[i] = new Square();
@@ -47,14 +42,40 @@ public class SudokuGame {
             columns[i] = new Column();
         }
 
-        for (int row=0; row < 9; ++row)
-            for (int column=0; column < 9; ++column)
-            {
+        Value[][] values = this.parseJSON(fileName);
+        this.fill(values);
+    }
+
+    public SudokuGame(int[][] intValues)
+    {
+        for (int i=0; i<9; ++i)
+        {
+            squares[i] = new Square();
+            rows[i] = new Row();
+            columns[i] = new Column();
+        }
+
+        this.fill(intValues);
+    }
+
+    private void fill(Value[][] values)
+    {
+        Tile tile;
+
+        for (int row=0; row < 9; ++row) {
+            for (int column = 0; column < 9; ++column) {
                 tile = new Tile(values[row][column]);
                 this.rows[row].AddChild(tile, column);
                 this.columns[column].AddChild(tile, row);
                 this.squares[Square.getSquareIndex(row, column)].AddChild(tile, row, column);
             }
+        }
+    }
+
+    private void fill(int[][] intValues)
+    {
+        Value[][] values = Value.convertIntArray(intValues);
+        this.fill(values);
     }
 
 
