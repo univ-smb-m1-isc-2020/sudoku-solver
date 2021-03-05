@@ -23,7 +23,13 @@ public class SudokuSolver {
         SudokuGame game = new SudokuGame(board);
         SudokuGame game2 = new SudokuGame("./boards/board1.json");
 
-        logger.log(Level.INFO, "First board : \n{0}",  game.toString());
-        logger.log(Level.INFO, "First board : \n{0}",  game2.toString());
+        logger.log(Level.INFO, "First board : \n{0}",  game);
+        logger.log(Level.INFO, "First board : \n{0}",  game2);
+    }
+
+
+    private void solveSudoku(SudokuGame game)
+    {
+        //TODO
     }
 }
