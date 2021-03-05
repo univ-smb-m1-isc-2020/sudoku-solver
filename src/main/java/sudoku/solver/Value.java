@@ -42,6 +42,7 @@ public enum Value {
         return result;
     }
 
+    @Override
     public String toString() {
         if (this.internalValue != -1)
             return Integer.toString(this.internalValue);

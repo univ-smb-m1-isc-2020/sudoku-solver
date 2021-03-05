@@ -39,6 +39,7 @@ public class Tile {
         return new ArrayList<>(result);
     }
 
+    @Override
     public String toString()
     {
         return this.value.toString();
