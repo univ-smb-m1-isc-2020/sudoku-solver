@@ -64,9 +64,30 @@ public class SudokuTest {
     @Test
     public void rowsAndColumnsValid(){
         Sudoku sudo = new Sudoku();
+        assertTrue(sudo.rowAtIndexIsValid(0));
+        assertTrue(sudo.colAtIndexIsValid(0));
         assertTrue(sudo.rowsAreValid());
-        sudo = new Sudoku(new int[][]{{1, 1}});
+        assertTrue(sudo.colsAreValid());
+
+        sudo = new Sudoku(new int[][]{ {1, 1} });
         assertFalse(sudo.rowAtIndexIsValid(0));
+        assertTrue(sudo.colAtIndexIsValid(0));
+        assertFalse(sudo.rowsAreValid());
+        assertTrue(sudo.colsAreValid());
+
+        sudo = new Sudoku(new int[][]{ {1}, {1} });
+        assertTrue(sudo.rowAtIndexIsValid(0));
+        assertFalse(sudo.colAtIndexIsValid(0));
+        assertTrue(sudo.rowsAreValid());
+        assertFalse(sudo.colsAreValid());
+
+        sudo = new Sudoku(new int[][]{ {1, 1}, {1, 1} });
+        assertFalse(sudo.rowAtIndexIsValid(0));
+        assertFalse(sudo.colAtIndexIsValid(0));
+        assertFalse(sudo.rowsAreValid());
+        assertFalse(sudo.colsAreValid());
+
+
     }
 
 

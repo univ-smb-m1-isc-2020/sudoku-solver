@@ -75,4 +75,33 @@ public class Sudoku {
         }
         return true;
     }
+
+    public boolean colAtIndexIsValid(int index) {
+        HashMap<Integer,Integer> alreadyPresent = new HashMap<Integer,Integer>();
+        for (int i = 0; i <10; i++) {
+            alreadyPresent.put(i,0);
+        }
+
+        for (int j = 0; j < LINE; j++) {
+            int nbOccurence = alreadyPresent.get(this.at(j,index));
+            alreadyPresent.replace(this.at(j,index), nbOccurence, nbOccurence + 1);
+        }
+
+        for (int key : alreadyPresent.keySet()) {
+            if(key > 0 && alreadyPresent.get(key) > 1){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean colsAreValid() {
+        boolean flag = true;
+        int index = 0;
+        while(flag && index < COLUMN){
+            flag = colAtIndexIsValid(index);
+            index++;
+        }
+        return flag;
+    }
 }
