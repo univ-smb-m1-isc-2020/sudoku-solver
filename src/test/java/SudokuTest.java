@@ -87,7 +87,6 @@ public class SudokuTest {
         assertFalse(sudo.rowsAreValid());
         assertFalse(sudo.colsAreValid());
 
-
     }
 
     @Test
