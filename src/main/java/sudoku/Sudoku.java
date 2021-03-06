@@ -113,12 +113,12 @@ public class Sudoku {
 
     public int squareRowIndex(int index){
         assert index < LINE;
-        return  index / 3 ;
+        return  (int)(index / 3);
     }
 
     public int squareColIndex(int index){
-        assert index < LINE;
-        return index / 3 ;
+        assert index < COLUMN;
+        return (int)(index / 3) ;
     }
 
     public boolean squareIsValid(int squareRowIndex, int squareColIndex) {
