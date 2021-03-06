@@ -113,12 +113,12 @@ public class Sudoku {
 
     public int squareRowIndex(int index){
         assert index < LINE;
-        return (int) Math.floor( index / 3 );
+        return  index / 3 ;
     }
 
     public int squareColIndex(int index){
         assert index < LINE;
-        return (int) Math.floor( index / 3 );
+        return index / 3 ;
     }
 
     public boolean squareIsValid(int squareRowIndex, int squareColIndex) {
@@ -146,8 +146,8 @@ public class Sudoku {
     }
 
     public boolean squaresAreValid() {
-        for (int row = 0; row < Math.floor( LINE / 3 ); row++)
-            for (int column = 0; column < Math.floor( COLUMN / 3 ); column++)
+        for (int row = 0; row <  LINE / 3 ; row++)
+            for (int column = 0; column < COLUMN / 3 ; column++)
                 if ( ! squareIsValid(row, column))
                     return false;
         return true;
