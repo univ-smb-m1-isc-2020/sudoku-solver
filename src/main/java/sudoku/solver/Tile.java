@@ -29,7 +29,6 @@ public class Tile {
     }
 
     ///Methods
-
     public void fill(Value value)  {
         if (value.getValue() < 1 || value.getValue() > 9)
         {
@@ -47,7 +46,7 @@ public class Tile {
     public List<Value> getPossibleFillings()
     {
         //Get the set of rows
-        HashSet<Value> result = new HashSet<>(this.row.getPossibleFillings());
+        HashSet<Value> result = this.row.getPossibleFillings();
 
         //Intersect the set with the column Set
         result.retainAll( new HashSet<>(this.column.getPossibleFillings()));
@@ -59,6 +58,12 @@ public class Tile {
         result.remove(Value.EMPTY);
 
         return new ArrayList<>(result);
+    }
+
+    public boolean isValidFilling(Value value)
+    {
+        List<Value> possibleFillings = this.getPossibleFillings();
+        return possibleFillings.contains(value);
     }
 
     @Override   
