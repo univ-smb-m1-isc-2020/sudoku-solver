@@ -18,7 +18,7 @@ public class Sudoku {
 
         // Grille
         for (int column = 0; column < COLUMN; column++) {
-            grid.add(new ArrayList<Integer>());
+            grid.add(new ArrayList<>());
             for (int line = 0; line < LINE; line++) {
                 grid.get(column).add(map[line][column]);
             }
@@ -59,7 +59,7 @@ public class Sudoku {
     }
 
     public boolean rowAtIndexIsValid(int index) {
-        HashMap<Integer, Integer> alreadyPresent = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> alreadyPresent = new HashMap<>();
         for (int i = 0; i < 10; i++) {
             alreadyPresent.put(i, 0);
         }
@@ -80,7 +80,7 @@ public class Sudoku {
 
     public boolean colAtIndexIsValid(int index) {
 
-        HashMap<Integer, Integer> alreadyPresent = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> alreadyPresent = new HashMap<>();
         for (int i = 0; i < 10; i++) {
             alreadyPresent.put(i, 0);
         }
@@ -121,7 +121,7 @@ public class Sudoku {
 
     public boolean squareIsValid(int squareRowIndex, int squareColIndex) {
 
-        HashMap<Integer, Integer> alreadyPresent = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> alreadyPresent = new HashMap<>();
         for (int i = 0; i < 10; i++) {
             alreadyPresent.put(i, 0);
         }
@@ -186,15 +186,15 @@ public class Sudoku {
         for (int line = 0; line < LINE; line++) {
             for (int col = 0; col < COLUMN; col++) {
                 if (this.at(line, col) == 0) {
-                    return new Pair<Integer, Integer>(line, col);
+                    return new Pair<>(line, col);
                 }
             }
         }
-        return new Pair<Integer, Integer>(-1, -1);
+        return new Pair<>(-1, -1);
     }
 
     public ArrayList<Integer> valuesInLine(int line) {
-        ArrayList<Integer> res = new ArrayList<Integer>();
+        ArrayList<Integer> res = new ArrayList<>();
         for (int j = 0; j < COLUMN; j++) {
             int valueCase = this.at(line, j);
             res.add(valueCase);
@@ -203,7 +203,7 @@ public class Sudoku {
     }
 
     public ArrayList<Integer> valuesInCol(int col) {
-        ArrayList<Integer> res = new ArrayList<Integer>();
+        ArrayList<Integer> res = new ArrayList<>();
         for (int j = 0; j < LINE; j++) {
             int valueCase = this.at(j, col);
             res.add(valueCase);
@@ -212,7 +212,7 @@ public class Sudoku {
     }
 
     public ArrayList<Integer> valuesInSquare(int squareRowIndex, int squareColIndex) {
-        ArrayList<Integer> res = new ArrayList<Integer>();
+        ArrayList<Integer> res = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 int valueCase = this.at(3 * squareRowIndex + i, 3 * squareColIndex + j);
@@ -224,12 +224,12 @@ public class Sudoku {
 
     public ArrayList<Integer> valuesPossibleForCase(int line, int col) {
 
-        ArrayList<Integer> temp = new ArrayList<Integer>();
+        ArrayList<Integer> temp = new ArrayList<>();
         temp.addAll(valuesInLine(line));
         temp.addAll(valuesInCol(col));
         temp.addAll(valuesInSquare(squareRowIndex(line), squareColIndex(col)));
 
-        ArrayList<Integer> res = new ArrayList<Integer>();
+        ArrayList<Integer> res = new ArrayList<>();
         for (int i = 1; i < 10; i++) {
             if (!temp.contains(i)) {
                 res.add(i);
