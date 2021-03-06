@@ -62,7 +62,7 @@ public class SudokuTest {
     }
 
     @Test
-    public void rowsAndColumnsValid(){
+    public void rowsAndColumnsAreValid(){
         Sudoku sudo = new Sudoku();
         assertTrue(sudo.rowAtIndexIsValid(0));
         assertTrue(sudo.colAtIndexIsValid(0));
@@ -90,6 +90,38 @@ public class SudokuTest {
 
     }
 
+    @Test
+    public void squaresAreValidInsideASudoku(){
+        Sudoku sudo = new Sudoku();
+        assertEquals(0, sudo.squareRowIndex(0));
+        System.out.println(sudo.squareRowIndex(1));
+        assertEquals(0, sudo.squareRowIndex(1));
+        assertEquals(0, sudo.squareRowIndex(2));
+        assertNotEquals(0, sudo.squareRowIndex(3));
+        assertEquals(1, sudo.squareRowIndex(3));
+
+        assertEquals(0, sudo.squareColIndex(0));
+        assertEquals(0, sudo.squareColIndex(1));
+        assertEquals(0, sudo.squareColIndex(2));
+        assertNotEquals(0, sudo.squareColIndex(3));
+        assertEquals(1, sudo.squareColIndex(3));
+
+        assertTrue(sudo.squareIsValid(sudo.squareRowIndex(0),sudo.squareColIndex(0)));
+        assertTrue(sudo.squaresAreValid());
+        sudo = new Sudoku(new int[][]{ {1, 1, 1}, {1, 1, 1}, {1, 1, 1} });
+        assertFalse(sudo.squareIsValid(sudo.squareRowIndex(0),sudo.squareColIndex(0)));
+        assertFalse(sudo.squaresAreValid());
+
+    }
+
+    @Test
+    public void sudokuIsValid(){
+        Sudoku sudo = new Sudoku();
+        assertTrue(sudo.isValid());
+        sudo = new Sudoku(new int[][]{ {1, 1, 1}, {1, 1, 1}, {1, 1, 1} });
+        assertFalse(sudo.isValid());
+
+    }
 
 
 

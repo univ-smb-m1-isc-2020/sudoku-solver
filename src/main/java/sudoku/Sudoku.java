@@ -39,12 +39,12 @@ public class Sudoku {
         });
     }
 
-    public int at(int column, int line) {
-        return grid.get(line).get(column);
+    public int at(int line, int column) {
+        return grid.get(column).get(line);
     }
 
-    public void at(int column, int line, int value){
-        this.grid.get(line).set(column, value);
+    public void at(int line, int column, int value){
+        this.grid.get(column).set(line, value);
     }
 
     public boolean rowsAreValid(){
@@ -54,6 +54,7 @@ public class Sudoku {
             flag = rowAtIndexIsValid(index);
             index++;
         }
+
         return flag;
     }
 
@@ -73,10 +74,12 @@ public class Sudoku {
                 return false;
             }
         }
+
         return true;
     }
 
     public boolean colAtIndexIsValid(int index) {
+
         HashMap<Integer,Integer> alreadyPresent = new HashMap<Integer,Integer>();
         for (int i = 0; i <10; i++) {
             alreadyPresent.put(i,0);
@@ -92,6 +95,7 @@ public class Sudoku {
                 return false;
             }
         }
+
         return true;
     }
 
@@ -104,4 +108,52 @@ public class Sudoku {
         }
         return flag;
     }
+
+    public int squareRowIndex(int index){
+        assert index < LINE;
+        return (int) Math.floor( index / 3 );
+    }
+
+    public int squareColIndex(int index){
+        assert index < LINE;
+        return (int) Math.floor( index / 3 );
+    }
+
+    public boolean squareIsValid(int squareRowIndex, int squareColIndex) {
+
+        HashMap<Integer,Integer> alreadyPresent = new HashMap<Integer,Integer>();
+        for (int i = 0; i <10; i++) {
+            alreadyPresent.put(i,0);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                int valueCase = this.at(3 * squareRowIndex + i, 3 * squareColIndex + j);
+                int nbOccurence = alreadyPresent.get(valueCase);
+                alreadyPresent.replace(valueCase, nbOccurence, nbOccurence + 1);
+            }
+        }
+
+        for (int key : alreadyPresent.keySet()) {
+            if(key > 0 && alreadyPresent.get(key) > 1){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public boolean squaresAreValid() {
+        for (int row = 0; row < Math.floor( LINE / 3 ); row++)
+            for (int column = 0; column < Math.floor( COLUMN / 3 ); column++)
+                if ( ! squareIsValid(row, column))
+                    return false;
+        return true;
+    }
+
+    public boolean isValid() {
+        return colsAreValid() && rowsAreValid() && squaresAreValid();
+    }
+
+
 }
