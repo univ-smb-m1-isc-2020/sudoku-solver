@@ -120,12 +120,8 @@ public class SudokuGame {
                 }
             }
         }
-
-        System.out.println(result);
-
         return result;
     }
-
 
     public void fillTile(int rowIndex, int columnIndex, Value value)
     {

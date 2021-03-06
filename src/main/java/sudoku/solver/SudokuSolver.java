@@ -1,6 +1,10 @@
 package sudoku.solver;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SudokuSolver {
 
@@ -29,10 +33,10 @@ public class SudokuSolver {
         SudokuSolver solver = new SudokuSolver(game);
         SudokuSolver solver2 = new SudokuSolver((game2));
 
-        solver.solveGame();
+        //solver.solveGame();
         solver2.solveGame();
 
-        logger.log(Level.INFO, "First board : \n{0}",  solver);
+        //logger.log(Level.INFO, "First board : \n{0}",  solver);
         logger.log(Level.INFO, "First board : \n{0}",  solver2);
 
     }
@@ -61,6 +65,56 @@ public class SudokuSolver {
 
     private void solveGame()
     {
-        solvedSudokuGame.getEmptyTiles();
+        List<Value> fillings;
+
+        //Get the list of empty tiles
+        List<Tile> emptyTiles = solvedSudokuGame.getEmptyTiles();
+
+        //Hashmap with tiles as keys and the possible fillings as values
+        HashMap<Tile, List<Value>> fillingsHashMap = new HashMap<>();
+        //Hashmap with tiles as keys and number of possible fillings as values
+        HashMap<Tile, Integer> sizeHashMap = new HashMap<>();
+
+        for (Tile tile : emptyTiles)
+        {
+            fillings = tile.getPossibleFillings();
+            fillingsHashMap.put(tile, fillings);
+            sizeHashMap.put(tile, fillings.size());
+        }
+
+        //Get the ordered list to optimize backtracking algorithm
+        List<Tile> sortedTiles =
+                sizeHashMap
+                        .entrySet()
+                        .stream()
+                        .sorted(Map.Entry.comparingByValue())
+                        .map(Map.Entry::getKey)
+                        .collect(Collectors.toList());
+
+        if (!backTrack(sortedTiles, 0, fillingsHashMap))
+            throw new IllegalArgumentException("Invalid sudoku board");
+    }
+
+
+    private boolean backTrack(List<Tile> sortedTiles, int sortedTilesIndex, HashMap<Tile, List<Value>> possibleFillings)
+    {
+        Tile tile = sortedTiles.get(sortedTilesIndex);
+        //iterate on values
+        for (Value value : possibleFillings.get(tile))
+        {
+            if (tile.isValidFilling(value))
+            {
+                tile.fill(value);
+                if (sortedTilesIndex == sortedTiles.size() - 1) //default case, placement of last tile
+                    return true;
+                else
+                    if (backTrack(sortedTiles, sortedTilesIndex + 1, possibleFillings))
+                        return true;
+            }
+        }
+
+        //no possible backtrack
+        tile.empty();
+        return false;
     }
 }
