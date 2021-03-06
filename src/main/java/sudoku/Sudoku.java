@@ -239,7 +239,7 @@ public class Sudoku {
         return res;
     }
 
-    public void print() {
+    public void display() {
         for (int row = 0; row < LINE; row++) {
             for (int col = 0; col < COLUMN; col++) {
                 System.out.print(this.at(row, col));
