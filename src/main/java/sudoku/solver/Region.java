@@ -1,5 +1,6 @@
 package sudoku.solver;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -15,11 +16,11 @@ public abstract class Region{
         return true;
     }
 
-    public List<Value> getPossibleFillings()
+    public HashSet<Value> getPossibleFillings()
     {
-        List<Value> result = new ArrayList<>();
+        HashSet<Value> result = new HashSet<>();
 
-        for (int i=0; i<9 ; ++i)
+        for (int i=1; i<=9 ; ++i)
             if (this.checkIfValidPlacement(i))
                 result.add(Value.values()[i]);
 
