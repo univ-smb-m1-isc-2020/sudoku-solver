@@ -6,7 +6,7 @@ public class BoardTest {
 
 
     @Test
-    void name() {
+    void textColumn() throws Exception{
 
     }
 }
