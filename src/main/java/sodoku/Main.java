@@ -1,3 +1,5 @@
+package sodoku;
+
 public class Main {
 
 
@@ -14,7 +16,7 @@ public class Main {
                 { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
         };
 
-        
+
 
     }
 }
