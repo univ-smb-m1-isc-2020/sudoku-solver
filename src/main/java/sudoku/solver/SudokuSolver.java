@@ -89,9 +89,8 @@ public class SudokuSolver {
                 tile.fill(value);
                 if (sortedTilesIndex == sortedTiles.size() - 1)
                     return true; //default case, placement of last tile
-                else
-                    if (backTrack(sortedTiles, sortedTilesIndex + 1, possibleFillings))
-                        return true;
+                else if (backTrack(sortedTiles, sortedTilesIndex + 1, possibleFillings))
+                    return true; 
             }
         }
 
