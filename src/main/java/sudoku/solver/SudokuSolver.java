@@ -2,9 +2,7 @@ package sudoku.solver;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class SudokuSolver {
 
@@ -15,7 +13,7 @@ public class SudokuSolver {
     {
         Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
-        int[][] board = {
+        /*int[][] board = {
                 { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
                 { 0, 7, 0, 0, 9, 0, 2, 0, 0 },
@@ -27,17 +25,15 @@ public class SudokuSolver {
                 { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
         };
 
-        SudokuGame game = new SudokuGame(board);
-        SudokuGame game2 = new SudokuGame("./boards/board1.json");
+        SudokuGame game = new SudokuGame(board);*/
+
+        SudokuGame game = new SudokuGame("./boards/board1.json");
 
         SudokuSolver solver = new SudokuSolver(game);
-        SudokuSolver solver2 = new SudokuSolver((game2));
 
-        //solver.solveGame();
-        solver2.solveGame();
+        solver.solveGame();
 
-        //logger.log(Level.INFO, "First board : \n{0}",  solver);
-        logger.log(Level.INFO, "First board : \n{0}",  solver2);
+        logger.log(Level.INFO, "Solver : \n{0}",  solver);
 
     }
 
@@ -56,7 +52,7 @@ public class SudokuSolver {
 
         acc.append("original board :\n");
         acc.append(this.sudokuGame);
-        acc.append("\n\n solved board :\n");
+        acc.append("\nsolved board :\n");
         acc.append(this.solvedSudokuGame);
 
         return acc.toString();
@@ -105,15 +101,15 @@ public class SudokuSolver {
             if (tile.isValidFilling(value))
             {
                 tile.fill(value);
-                if (sortedTilesIndex == sortedTiles.size() - 1) //default case, placement of last tile
-                    return true;
+                if (sortedTilesIndex == sortedTiles.size() - 1)
+                    return true; //default case, placement of last tile
                 else
                     if (backTrack(sortedTiles, sortedTilesIndex + 1, possibleFillings))
-                        return true;
+                        return true; 
             }
         }
 
-        //no possible backtrack
+        //backtrack
         tile.empty();
         return false;
     }
