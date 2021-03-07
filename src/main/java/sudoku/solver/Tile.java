@@ -46,7 +46,7 @@ public class Tile {
     public List<Value> getPossibleFillings()
     {
         //Get the set of rows
-        HashSet<Value> result = this.row.getPossibleFillings();
+        HashSet<Value> result = (HashSet<Value>) this.row.getPossibleFillings();
 
         //Intersect the set with the column Set
         result.retainAll( new HashSet<>(this.column.getPossibleFillings()));

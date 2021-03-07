@@ -13,20 +13,6 @@ public class SudokuSolver {
     {
         Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
-        /*int[][] board = {
-                { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
-                { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
-                { 0, 7, 0, 0, 9, 0, 2, 0, 0 },
-                { 0, 5, 0, 0, 0, 7, 0, 0, 0 },
-                { 0, 0, 0, 0, 4, 5, 7, 0, 0 },
-                { 0, 0, 0, 1, 0, 0, 0, 3, 0 },
-                { 0, 0, 1, 0, 0, 0, 0, 6, 8 },
-                { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
-                { 0, 9, 0, 0, 0, 0, 4, 0, 0 }
-        };
-
-        SudokuGame game = new SudokuGame(board);*/
-
         SudokuGame game = new SudokuGame("./boards/board1.json");
 
         SudokuSolver solver = new SudokuSolver(game);
@@ -105,7 +91,7 @@ public class SudokuSolver {
                     return true; //default case, placement of last tile
                 else
                     if (backTrack(sortedTiles, sortedTilesIndex + 1, possibleFillings))
-                        return true; 
+                        return true;
             }
         }
 

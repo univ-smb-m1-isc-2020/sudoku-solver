@@ -1,6 +1,7 @@
 package sudoku.solver;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public abstract class Region{
 
@@ -14,7 +15,7 @@ public abstract class Region{
         return true;
     }
 
-    public HashSet<Value> getPossibleFillings()
+    public Set<Value> getPossibleFillings()
     {
         HashSet<Value> result = new HashSet<>();
 
