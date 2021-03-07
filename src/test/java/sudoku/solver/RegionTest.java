@@ -26,15 +26,15 @@ class RegionTest {
     void should_return_available_fillings() {
 
         // Given
-        HashSet<Value> fillings = new HashSet<>();
-        fillings.add(Value.TWO);
-        fillings.add(Value.THREE);
-        fillings.add(Value.FIVE);
+        HashSet<Value> expectedFillings = new HashSet<>();
+        expectedFillings.add(Value.TWO);
+        expectedFillings.add(Value.THREE);
+        expectedFillings.add(Value.FIVE);
 
         // When
         HashSet<Value> columnFillings = (HashSet<Value>) column.getPossibleFillings();
 
         // Then
-        assertThat(columnFillings.equals(fillings)).isTrue();
+        assertThat(columnFillings).isEqualTo(expectedFillings);
     }
 }
