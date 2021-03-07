@@ -23,7 +23,7 @@ class RegionTest {
     private final Column column = new Column(columnValues);
 
     @Test
-    public void should_return_available_fillings() {
+    void should_return_available_fillings() {
 
         // Given
         HashSet<Value> fillings = new HashSet<>();
@@ -35,7 +35,6 @@ class RegionTest {
         HashSet<Value> columnFillings = (HashSet<Value>) column.getPossibleFillings();
 
         // Then
-        assertThat(columnFillings.equals(fillings));
-
+        assertThat(columnFillings.equals(fillings)).isTrue();
     }
 }
