@@ -90,7 +90,9 @@ public class SudokuSolver {
                 if (sortedTilesIndex == sortedTiles.size() - 1)
                     return true; //default case, placement of last tile
                 else if (backTrack(sortedTiles, sortedTilesIndex + 1, possibleFillings))
-                    return true; 
+                    return true;
+                else
+                    tile.empty(); //totally unneeded but otherwise causes a code smell
             }
         }
 
