@@ -35,6 +35,6 @@ class RegionTest {
         HashSet<Value> columnFillings = (HashSet<Value>) column.getPossibleFillings();
 
         // Then
-        assertThat(columnFillings.equals(fillings)).isTrue();
+        assertThat(columnFillings.equals(fillings)).isEqualTo(true);
     }
 }
