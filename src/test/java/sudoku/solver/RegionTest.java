@@ -35,6 +35,6 @@ class RegionTest {
         HashSet<Value> actualFillings = (HashSet<Value>) column.getPossibleFillings();
 
         // Then
-        assertThat(actualFillings) .isEqualTo(expectedFillings);
+        assertThat(actualFillings).isEqualTo(expectedFillings);
     }
 }
