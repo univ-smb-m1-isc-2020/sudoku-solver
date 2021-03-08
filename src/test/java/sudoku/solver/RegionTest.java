@@ -23,7 +23,7 @@ class RegionTest {
     private final Column column = new Column(columnValues);
 
     @Test
-    void should_return_available_fillings() {
+    void checkIfValidPlacement() {
 
         // Given
         HashSet<Value> expectedFillings = new HashSet<>();
@@ -32,9 +32,9 @@ class RegionTest {
         expectedFillings.add(Value.FIVE);
 
         // When
-        HashSet<Value> columnFillings = (HashSet<Value>) column.getPossibleFillings();
+        HashSet<Value> actualFillings = (HashSet<Value>) column.getPossibleFillings();
 
         // Then
-        assertThat(columnFillings).isEqualTo(expectedFillings);
+        assertThat(actualFillings) .isEqualTo(expectedFillings);
     }
 }
