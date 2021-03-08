@@ -1,5 +1,7 @@
 package sodoku;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -8,8 +10,9 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Board {
     private int[][] boardArray;
     private int boardLength;
+    private Random rand = SecureRandom.getInstanceStrong();
 
-    public Board(int[][] board) {
+    public Board(int[][] board) throws NoSuchAlgorithmException {
         this.boardArray = board;
         this.boardLength = board.length;
     }
@@ -66,7 +69,6 @@ public class Board {
     }
 
     public boolean verifRow(int indexRow, int[][] _boardArray){
-        //System.out.println("verifRow");
 
         boolean result = true;
 
@@ -112,7 +114,7 @@ public class Board {
 
         for (int i = 0; i < blockList.size(); i++) {
             for (int j = i + 1 ; j < blockList.size(); j++) {
-                if (blockList.get(i) == blockList.get(j)) {
+                if (blockList.get(i).equals(blockList.get(j))) {
                     result = false;
                 }
             }
@@ -128,8 +130,7 @@ public class Board {
         for (int i = 0; i < boardLength; i++) {
             for (int j = 0 ; j < boardLength; j++) {
                 if (_boardArray[i][j] == 0) {
-                    Random r = new Random();
-                    _boardArray[i][j] =  r.nextInt((9 - 1) + 1) + 1;
+                    _boardArray[i][j] =  rand.nextInt((9 - 1) + 1) + 1;
                 }
             }
         }
