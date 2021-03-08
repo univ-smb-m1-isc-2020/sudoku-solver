@@ -1,9 +1,11 @@
 package sodoku;
 
+import java.security.NoSuchAlgorithmException;
+
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
 
         int[][] boardArray = {
                 { 8, 0, 0, 0, 0, 0, 0, 0, 0 },

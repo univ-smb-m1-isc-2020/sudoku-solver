@@ -30,12 +30,11 @@ public class Board {
     }
 
 
-    public Board SearchSoluce(){
+    public Board SearchSoluce() throws NoSuchAlgorithmException {
         int[][] boardSoluce = copyArray();
         boolean good = false;
 
         while (!good){
-            //System.out.println(good);
             boardSoluce = getSoluce(copyArray());
             good = verifBoard(boardSoluce);
 
@@ -45,26 +44,25 @@ public class Board {
     }
 
     public boolean verifBoard(int[][] _boardArray){
-        //System.out.println("verifBoard");
         boolean result = true;
         for (int i = 0; i < boardLength; i++) {
             if(result == true){
                     result = verifRow(i, _boardArray);
             }
 
-           if(result == true){
+          /* if(result == true){
                 result = verifColumn(i, _boardArray);
-           }
+           }*/
         }
 
-        for (int i = 0; i < boardLength / 3; i++) {
+       /* for (int i = 0; i < boardLength / 3; i++) {
             for (int j = 0; i < boardLength / 3; j++) {
                 if(result == true){
                     result = verifBlock(i,j, _boardArray);
                 }
             }
-        }
-
+        }*/
+        System.out.print(result);
         return result;
     }
 
@@ -83,7 +81,6 @@ public class Board {
     }
 
     public boolean verifColumn(int indexColumn, int[][] _boardArray){
-        System.out.print(indexColumn);
         boolean resultColumn = true;
 
         for (int i = 0; i < boardLength; i++) {
@@ -98,8 +95,6 @@ public class Board {
     }
 
     public boolean verifBlock(int indexRow, int indexColumn, int[][] _boardArray){
-        System.out.println("verifBlock");
-
         boolean result = true;
         int firstIndexRow = 3 * indexRow;
         int firstIndexCollumn = 3 * indexColumn;
@@ -126,15 +121,25 @@ public class Board {
 
 
     public int[][] getSoluce(int[][] _boardArray){
-        System.out.print("s");
+
+
         for (int i = 0; i < boardLength; i++) {
+            int mem = 0;
             for (int j = 0 ; j < boardLength; j++) {
+
+
                 if (_boardArray[i][j] == 0) {
-                    _boardArray[i][j] =  rand.nextInt((9 - 1) + 1) + 1;
+                    int randNum = mem;
+                    while (randNum == mem){
+
+                        randNum =  rand.nextInt((9 - 1) + 1) + 1;
+
+                    }
+                    mem = randNum;
+                    _boardArray[i][j] =  randNum;
                 }
             }
         }
-        System.out.println(ArraytoString(_boardArray));
         return _boardArray;
 
     }
